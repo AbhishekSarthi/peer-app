@@ -5,6 +5,9 @@
   "repository": "https://github.com/jeremija/peer-calls",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "engines":{
+    "node":"10.5.0"
+ },
   "bin": {
     "peer-calls": "./lib/index.js"
   },
@@ -51,6 +54,7 @@
   "license": "MIT",
   "dependencies": {
     "debug": "^4.1.1",
+    "typescript": "^2.9.2",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "ioredis": "^4.16.0",
