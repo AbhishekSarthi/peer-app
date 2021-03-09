@@ -49,6 +49,7 @@ router.use('/static', express.static(path.join(__dirname, '../../build')))
 router.use('/call', call)
 router.use('/', index)
 app.use(BASE_URL, router)
+app.use(express.static(__dirname + '/public'))
 
 const stores = configureStores(io, config.store)
 io.on('connection', socket => handleSocket(socket, io, stores))
