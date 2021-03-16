@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { AudioConstraint, MediaDevice, setAudioConstraint, setVideoConstraint, VideoConstraint, getMediaStream, enumerateDevices, play } from '../actions/MediaActions'
 import { MediaState } from '../reducers/media'
@@ -9,6 +9,8 @@ import { ME, DialState, DIAL_STATE_HUNG_UP } from '../constants'
 import { dial } from '../actions/CallActions'
 import { setNickname } from '../actions/NicknameActions'
 import {attendance} from './attendance'
+import { Link, Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import Webinar from './Webinar'
 
 export type MediaProps = MediaState & {
   dial: typeof dial
@@ -165,8 +167,10 @@ export const AutoplayMessage = React.memo(
 )
 
 export const Media = c(React.memo(function Media(props: MediaProps) {
+  
   return (
     <div className='media-container'>
+
       <Alerts>
         {props.autoplayError && (
           <Alert>
@@ -176,6 +180,19 @@ export const Media = c(React.memo(function Media(props: MediaProps) {
       </Alerts>
 
       <MediaForm {...props} />
+      <br />
+      <br />
+
+      <Router>
+        <div className="side-button-webinar">
+          <Switch>
+            <Route path="/webinar" exact component={Webinar} />
+          </Switch>
+        </div> 
+        <Link to="/webinar">
+          <li className="add-webinar">Check Webinar</li>
+        </Link>
+      </Router>
     </div>
   )
 }))
@@ -193,6 +210,7 @@ const labels = {
 
 function Options(props: OptionsProps) {
   const label = labels[props.type]
+  
   return (
     <React.Fragment>
       <option value='false'>No {label}</option>
@@ -209,6 +227,7 @@ function Options(props: OptionsProps) {
           </option>,
         )
       }
+     
     </React.Fragment>
   )
 }

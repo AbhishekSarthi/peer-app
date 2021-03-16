@@ -1,7 +1,9 @@
 import classnames from 'classnames'
+
 import forEach from 'lodash/forEach'
 import keyBy from 'lodash/keyBy'
 import React from 'react'
+
 import Peer from 'simple-peer'
 import { hangUp } from '../actions/CallActions'
 import { Message } from '../actions/ChatActions'
@@ -48,6 +50,7 @@ export default class App extends React.PureComponent<AppProps, AppState> {
   state: AppState = {
     chatVisible: false,
   }
+
   handleShowChat = () => {
     this.setState({
       chatVisible: true,
@@ -96,6 +99,7 @@ export default class App extends React.PureComponent<AppProps, AppState> {
     const localStreams = this.getLocalStreams()
 
     return (
+      <>
       <div className="app">
         <Side align='flex-end' left zIndex={2}>
           <Toolbar
@@ -109,13 +113,13 @@ export default class App extends React.PureComponent<AppProps, AppState> {
             desktopStream={localStreams[constants.STREAM_TYPE_DESKTOP]}
             onGetDesktopStream={this.props.getDesktopStream}
             onRemoveStream={this.props.removeStream}
-          />
+            />
         </Side>
         <Side className={chatVisibleClassName} top zIndex={1}>
           <Notifications
             dismiss={dismissNotification}
             notifications={notifications}
-          />
+            />
           <Media />
         </Side>
         <Chat
@@ -124,7 +128,7 @@ export default class App extends React.PureComponent<AppProps, AppState> {
           onClose={this.handleHideChat}
           sendMessage={sendMessage}
           visible={this.state.chatVisible}
-        />
+          />
 
         <Videos
           onChangeNickname={sendMessage}
@@ -134,9 +138,12 @@ export default class App extends React.PureComponent<AppProps, AppState> {
           nicknames={this.props.nicknames}
           peers={this.props.peers}
           windowStates={this.props.windowStates}
-        />
-        
-      </div>
+          />
+        </div>
+      
+     
+
+        </>
     )
   }
 }

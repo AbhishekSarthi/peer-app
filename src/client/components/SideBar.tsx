@@ -29,35 +29,35 @@ export interface ToolbarState {
 
 }
 
-export interface ToolbarButtonProps {
-  className?: string
-  badge?: string | number
-  blink?: boolean
-  onClick: () => void
-  icon: string
-  offIcon?: string
-  on?: boolean
-  title: string
-}
+// export interface ToolbarButtonProps {
+//   className?: string
+//   badge?: string | number
+//   blink?: boolean
+//   onClick: () => void
+//   icon: string
+//   offIcon?: string
+//   on?: boolean
+//   title: string
+// }
 
 
-function ToolbarButton(props: ToolbarButtonProps) {
-  const { blink, on } = props
-  const icon = !on && props.offIcon ? props.offIcon : props.icon
-
-  return (
-    <a
-      className={classnames('button', props.className, { blink, on })}
-      onClick={props.onClick}
-      href='#'
-    >
-      <span className={classnames('icon', icon)}>
-        {!!props.badge && <span className='badge'>{props.badge}</span>}
-      </span>
-      <span className="tooltip">{props.title}</span>
-    </a>
-  )
-}
+// function ToolbarButton(props: ToolbarButtonProps) {
+//   const { blink, on } = props
+//   const icon = !on && props.offIcon ? props.offIcon : props.icon
+//
+//   return (
+//     <a
+//       className={classnames('button', props.className, { blink, on })}
+//       onClick={props.onClick}
+//       href='#'
+//     >
+//       <span className={classnames('icon', icon)}>
+//         {!!props.badge && <span className='badge'>{props.badge}</span>}
+//       </span>
+//       <span className="tooltip">{props.title}</span>
+//     </a>
+//   )
+// }
 
 
 // interface ReadOnlyNicknameProps {
@@ -88,15 +88,15 @@ export default class SideBar extends React.PureComponent<ToolbarProps, ToolbarSt
   // videoRef = React.createRef<HTMLVideoElement>()
   file = React.createRef<HTMLInputElement>()
 
-  constructor(props: ToolbarProps) {
-    super(props)
-    this.state = {
+  // constructor(props: ToolbarProps) {
+    // super(props)
+    // this.state = {
     
-      camDisabled: false,
-      micMuted: false,
+    //   // camDisabled: false,
+    //   // micMuted: false,
 
-    }
-  }
+    // }
+  // }
 
   // componentDidMount () {
   //   this.componentDidUpdate()
@@ -175,14 +175,14 @@ export default class SideBar extends React.PureComponent<ToolbarProps, ToolbarSt
         )} */}
 
        
-          {this.props.dialState === DIAL_STATE_IN_CALL && (
+          {/* {this.props.dialState === DIAL_STATE_IN_CALL && (
             <ToolbarButton
               onClick={this.props.onHangup}
               className='hangup'
               icon='icon-call_end'
               title="Hang Up"
             />
-          )}
+          )} */}
 
         <span>{attendance}</span>
   
